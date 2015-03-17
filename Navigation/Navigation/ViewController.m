@@ -6,11 +6,10 @@
 //  Copyright (c) 2014 Vinicius Miana. All rights reserved.
 //
 
-#import "LetraAViewController.h"
-#import "LetraBViewController.h"
+#import "ViewController.h"
 #import "DataCenter.h"
 
-@implementation LetraAViewController{
+@implementation ViewController{
     DataCenter *data;
     int i;
     UILabel *label;
