@@ -16,8 +16,8 @@
 
 -(void) initData {
     letters = [[NSArray alloc]initWithObjects:@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"X", @"W", @"Y", @"Z", nil];
-    words = [[NSArray alloc] initWithObjects:@"Apple", @"Battery", @"Carro", @"D", @"Eletricidade", @"Faca", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"X", @"W", @"Yellow", @"Zoo", nil];
-    images = [[NSArray alloc] initWithObjects:@"Apple.png", @"Battery.png", @"Carro.png", @"D.png", @"Eletricidade.png", @"Faca.png", @"G.png", @"H.png", @"I.png", @"J.png", @"K.png", @"L.png", @"M.png", @"N.png", @"O.png", @"P.png", @"Q.png", @"R.png", @"S.png", @"T.png", @"U.png", @"V.png", @"X.png", @"W.png", @"Yellow.png", @"Zoo.png", nil];
+    words = [[NSArray alloc] initWithObjects:@"Apple", @"Battery", @"Car", @"D", @"Eletricidade", @"Faca", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"X", @"W", @"Yellow", @"Zoo", nil];
+    images = [[NSArray alloc] initWithObjects:@"Apple.png", @"Battery.png", @"Car.png", @"D.png", @"Eletricidade.png", @"Faca.png", @"G.png", @"H.png", @"I.png", @"J.png", @"K.png", @"L.png", @"M.png", @"N.png", @"O.png", @"P.png", @"Q.png", @"R.png", @"S.png", @"T.png", @"U.png", @"V.png", @"X.png", @"W.png", @"Yellow.png", @"Zoo.png", nil];
 }
 
 -(NSString*)returnLetter:(int)i{

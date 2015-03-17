@@ -34,30 +34,6 @@
     
     UIBarButtonItem *back = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(back:)];
     self.navigationItem.leftBarButtonItem=back;
-    
-    
-    // Label
-    label = [[UILabel alloc]initWithFrame:CGRectMake(0, 450, 300, 80)];
-    label.text = [data returnWord:i];
-    label.font = [UIFont fontWithName:@"Zapfino" size:25];
-    label.textColor = [UIColor blueColor];
-    label.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:label];
-    
-    //Imagem
-    
-    imageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 130, 280, 280)];
-    image = [data returnImage:i];
-    imageView.image = image;
-    [self.view addSubview: imageView];
-    
-    
-//    UIButton *botao = [UIButton buttonWithType:UIButtonTypeSystem];
-//    [botao setTitle:@"???" forState:UIControlStateNormal];
-//    [botao sizeToFit];
-//    botao.center = self.view.center;
-//    
-//    [self.view addSubview:botao];
 }
 
 -(void)next:(id)sender {
@@ -65,11 +41,30 @@
     else i++;
     
     self.title = [data returnLetter:i];
-    label.text = [data returnWord:i];
-    image = [data returnImage:i];
-    imageView.image = image;
-//    LetraBViewController *proximo = [[LetraBViewController alloc]initWithNibName:nil bundle:NULL];
-//    [self.navigationController pushViewController:proximo animated:YES];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        imageView.transform = CGAffineTransformTranslate(imageView.transform, -300, 0);
+        label.transform = CGAffineTransformTranslate(label.transform, -300, 0);
+    } completion:^(BOOL finished) {
+        label.text = [data returnWord:i];
+        label.frame = CGRectMake(300, 450, 300, 80);
+        
+        [imageView removeFromSuperview];
+        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(300, 100, 280, 280)];
+        image = [data returnImage:i];
+        imageView.image = image;
+        [self.view addSubview: imageView];
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            imageView.transform = CGAffineTransformTranslate(imageView.transform, -280, 0);
+            label.transform = CGAffineTransformTranslate(label.transform, -290, 0);
+        }];
+    }];
+//    
+//    [UIView animateWithDuration:2.0 animations:^{
+//        //imageView.transform = CGAffineTransformMakeScale(2, 2);
+//        
+//    }];
 }
 
 -(void)back:(id)sender{
@@ -77,9 +72,45 @@
     else i--;
     
     self.title = [data returnLetter:i];
-    label.text = [data returnWord:i];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        imageView.transform = CGAffineTransformTranslate(imageView.transform, 300, 0);
+        label.transform = CGAffineTransformTranslate(label.transform, 300, 0);
+    } completion:^(BOOL finished) {
+        label.text = [data returnWord:i];
+        label.frame = CGRectMake(-300, 450, 300, 80);
+        
+        [imageView removeFromSuperview];
+        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(-300, 100, 280, 280)];//90, 200, 140, 140)];
+        image = [data returnImage:i];
+        imageView.image = image;
+        [self.view addSubview: imageView];
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            imageView.transform = CGAffineTransformTranslate(imageView.transform, 320, 0);
+            label.transform = CGAffineTransformTranslate(label.transform, 320, 0);
+        }];
+    }];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    imageView = [[UIImageView alloc]initWithFrame:CGRectMake(300, 100, 280, 280)];
     image = [data returnImage:i];
     imageView.image = image;
+    [self.view addSubview: imageView];
+    
+    label = [[UILabel alloc]initWithFrame:CGRectMake(300, 450, 300, 80)];
+    
+    label.text = [data returnWord:i];
+    label.font = [UIFont fontWithName:@"Zapfino" size:25];
+    label.textColor = [UIColor blueColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:label];
+    
+    [UIView animateWithDuration:2.0 animations:^{
+        imageView.transform = CGAffineTransformTranslate(imageView.transform, -280, 0);
+        label.transform = CGAffineTransformTranslate(label.transform, -290, 0);
+    }];
 }
 
 @end
