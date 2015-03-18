@@ -17,11 +17,13 @@
                                            initWithNibName:nil
                                            bundle:nil];
     
+    //UITabBarController *tabBarController = [[UITabBarController alloc] init];
     
     self.navigationController = [[UINavigationController alloc]
                                  initWithRootViewController:viewController];
     self.window = [[UIWindow alloc]
                    initWithFrame:[[UIScreen mainScreen] bounds]];
+    //self.window.rootViewController = tabBarController;
     self.window.rootViewController = self.navigationController;
 
 

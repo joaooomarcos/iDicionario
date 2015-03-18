@@ -41,6 +41,8 @@
     
     self.title = [data returnLetter:i];
     
+   // imageView.transform = CGAffineTransformIdentity;
+    
     [UIView animateWithDuration:0.5 animations:^{
         imageView.transform = CGAffineTransformTranslate(imageView.transform, -300, 0);
         label.transform = CGAffineTransformTranslate(label.transform, -300, 0);
@@ -67,6 +69,8 @@
     else i--;
     
     self.title = [data returnLetter:i];
+    
+    //imageView.transform = CGAffineTransformIdentity;
     
     [UIView animateWithDuration:0.5 animations:^{
         imageView.transform = CGAffineTransformTranslate(imageView.transform, 300, 0);
@@ -104,8 +108,8 @@
     [self.view addSubview:label];
     
     [UIView animateWithDuration:2.0 animations:^{
-        imageView.transform = CGAffineTransformTranslate(imageView.transform, -280, 0);
-        label.transform = CGAffineTransformTranslate(label.transform, -290, 0);
+        imageView.transform = CGAffineTransformMakeTranslation(-280, 0);
+        label.transform = CGAffineTransformMakeTranslation(-290, 0);
     }];
 }
 
@@ -115,15 +119,17 @@
     imageView.frame = CGRectMake(20, 100, 280, 280);
     
     [UIView animateWithDuration:2.0 animations:^{
-        imageView.transform = CGAffineTransformMakeScale(1.1, 1.1);
+        imageView.transform = CGAffineTransformMakeScale(2, 2);
     }];
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.view.layer removeAllAnimations];
     [UIView animateWithDuration:1.0 animations:^{
-        imageView.transform = CGAffineTransformMakeScale(0.9, 0.9);
+        //imageView.transform = CGAffineTransformMakeScale(0.9, 0.9);
+        imageView.transform = CGAffineTransformIdentity;
     }];
+    
 }
 
 @end
