@@ -49,21 +49,17 @@
         label.frame = CGRectMake(300, 450, 300, 80);
         
         [imageView removeFromSuperview];
-        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(300, 100, 280, 280)];
+        
+        imageView.frame = CGRectMake(300, 100, 280, 280);
         image = [data returnImage:i];
         imageView.image = image;
         [self.view addSubview: imageView];
         
         [UIView animateWithDuration:0.5 animations:^{
-            imageView.transform = CGAffineTransformTranslate(imageView.transform, -280, 0);
-            label.transform = CGAffineTransformTranslate(label.transform, -290, 0);
+            imageView.transform = CGAffineTransformTranslate(imageView.transform, -282, 0);
+            label.transform = CGAffineTransformTranslate(label.transform, -300, 0);
         }];
     }];
-//    
-//    [UIView animateWithDuration:2.0 animations:^{
-//        //imageView.transform = CGAffineTransformMakeScale(2, 2);
-//        
-//    }];
 }
 
 -(void)back:(id)sender{
@@ -80,19 +76,20 @@
         label.frame = CGRectMake(-300, 450, 300, 80);
         
         [imageView removeFromSuperview];
-        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(-300, 100, 280, 280)];//90, 200, 140, 140)];
+        imageView.frame = CGRectMake(-300, 100, 280, 280);
         image = [data returnImage:i];
         imageView.image = image;
         [self.view addSubview: imageView];
         
         [UIView animateWithDuration:0.5 animations:^{
             imageView.transform = CGAffineTransformTranslate(imageView.transform, 320, 0);
-            label.transform = CGAffineTransformTranslate(label.transform, 320, 0);
+            label.transform = CGAffineTransformTranslate(label.transform, 310, 0);
         }];
     }];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    
     imageView = [[UIImageView alloc]initWithFrame:CGRectMake(300, 100, 280, 280)];
     image = [data returnImage:i];
     imageView.image = image;
@@ -109,6 +106,23 @@
     [UIView animateWithDuration:2.0 animations:^{
         imageView.transform = CGAffineTransformTranslate(imageView.transform, -280, 0);
         label.transform = CGAffineTransformTranslate(label.transform, -290, 0);
+    }];
+}
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+
+    imageView.transform = CGAffineTransformIdentity;
+    imageView.frame = CGRectMake(20, 100, 280, 280);
+    
+    [UIView animateWithDuration:2.0 animations:^{
+        imageView.transform = CGAffineTransformMakeScale(1.1, 1.1);
+    }];
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.view.layer removeAllAnimations];
+    [UIView animateWithDuration:1.0 animations:^{
+        imageView.transform = CGAffineTransformMakeScale(0.9, 0.9);
     }];
 }
 
