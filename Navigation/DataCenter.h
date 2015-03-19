@@ -3,7 +3,7 @@
 //  Navigation
 //
 //  Created by João Marcos on 16/03/15.
-//  Copyright (c) 2015 Vinicius Miana. All rights reserved.
+//  Copyright (c) 2015 João Marcos. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,5 +14,6 @@
 -(NSString*) returnLetter:(int)i;
 -(NSString*) returnWord:(int)i;
 -(UIImage*) returnImage:(int)i;
+-(int) countData;
 
 @end

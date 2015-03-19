@@ -2,33 +2,52 @@
 //  MackenzieAppDelegate.m
 //  Navigation
 //
-//  Created by Vinicius Miana on 2/21/14.
-//  Copyright (c) 2014 Vinicius Miana. All rights reserved.
+//  Created by João Marcos on 2/21/14.
+//  Copyright (c) 2014 João Marcos. All rights reserved.
 //
 
 #import "MackenzieAppDelegate.h"
 #import "ViewController.h"
+#import "TableView.h"
+#import "TabBarController.h"
 
 @implementation MackenzieAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    ViewController *viewController = [[ViewController alloc]
-                                           initWithNibName:nil
-                                           bundle:nil];
+    // Criando as Views
+    ViewController *viewController = [[ViewController alloc]initWithNibName:nil bundle:nil];
+    TableView *tbv = [[TableView alloc]init];
     
+    // Criando a TabBarController
     //UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    TabBarController *tabBarController = [[TabBarController alloc] init];
     
-    self.navigationController = [[UINavigationController alloc]
-                                 initWithRootViewController:viewController];
-    self.window = [[UIWindow alloc]
-                   initWithFrame:[[UIScreen mainScreen] bounds]];
-    //self.window.rootViewController = tabBarController;
-    self.window.rootViewController = self.navigationController;
-
-
+    // Criando a Navigation Controller
+    self.navigationController = [[UINavigationController alloc]initWithRootViewController:viewController];
     
+    // Cor da NC
+    self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:0.0/255.0 green:111.0/255.0 blue:255.0/255.0 alpha:1.0];
+    
+    // Adicionando as Views na TabBar
+    [tabBarController addChildViewController:self.navigationController];
+    [tabBarController addChildViewController:tbv];
+
+    // Setando o Título do item da TabBar
+    [tbv setTitle:@"List"];
+    
+    
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = tabBarController;
+    
+    // Colocando os icones e nomes dos itens da TabBar
+    viewController.tabBarItem.image = [UIImage imageNamed:@"iconnav.png"];
+    tbv.tabBarItem.title = @"List";
+    tbv.tabBarItem.image = [UIImage imageNamed:@"iconlist.png"];
+    
+    // Cor de fundo da view
     self.window.backgroundColor = [UIColor whiteColor];
+    
     [self.window makeKeyAndVisible];
     
     return YES;
