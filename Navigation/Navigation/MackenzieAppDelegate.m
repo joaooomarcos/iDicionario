@@ -9,7 +9,6 @@
 #import "MackenzieAppDelegate.h"
 #import "ViewController.h"
 #import "TableView.h"
-#import "TabBarController.h"
 
 @implementation MackenzieAppDelegate
 
@@ -20,8 +19,7 @@
     TableView *tbv = [[TableView alloc]init];
     
     // Criando a TabBarController
-    //UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    TabBarController *tabBarController = [[TabBarController alloc] init];
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
     
     // Criando a Navigation Controller
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:viewController];
@@ -34,8 +32,11 @@
     [tabBarController addChildViewController:tbv];
 
     // Setando o Título do item da TabBar
+    [viewController setTitle: @"Letters"];
     [tbv setTitle:@"List"];
     
+    tabBarController.tabBar.backgroundColor = [UIColor colorWithRed:0.0/255.0 green:111.0/255.0 blue:255.0/255.0 alpha:1.0];
+    tabBarController.view.tintColor = [UIColor colorWithRed:0.0/255.0 green:111.0/255.0 blue:255.0/255.0 alpha:1.0];
     
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = tabBarController;

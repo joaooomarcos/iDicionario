@@ -10,7 +10,6 @@
 		17CF8D231AB74E5100C974EC /* DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CF8D221AB74E5100C974EC /* DataCenter.m */; };
 		17EEC8EB1ABA1D7B00EF19F7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17EEC8EA1ABA1D7B00EF19F7 /* AVFoundation.framework */; };
 		17EEC8F11ABA248E00EF19F7 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EEC8F01ABA248E00EF19F7 /* TableView.m */; };
-		17EEC8F41ABA91C600EF19F7 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EEC8F31ABA91C600EF19F7 /* TabBarController.m */; };
 		27156F4D18B76AF50053A99C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27156F4C18B76AF50053A99C /* Foundation.framework */; };
 		27156F4F18B76AF50053A99C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27156F4E18B76AF50053A99C /* CoreGraphics.framework */; };
 		27156F5118B76AF50053A99C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27156F5018B76AF50053A99C /* UIKit.framework */; };
@@ -42,8 +41,6 @@
 		17EEC8EA1ABA1D7B00EF19F7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		17EEC8EF1ABA248E00EF19F7 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		17EEC8F01ABA248E00EF19F7 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
-		17EEC8F21ABA91C600EF19F7 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
-		17EEC8F31ABA91C600EF19F7 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		27156F4918B76AF50053A99C /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27156F4C18B76AF50053A99C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27156F4E18B76AF50053A99C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -127,8 +124,6 @@
 				17CF8D221AB74E5100C974EC /* DataCenter.m */,
 				27156F5B18B76AF50053A99C /* MackenzieAppDelegate.h */,
 				27156F5C18B76AF50053A99C /* MackenzieAppDelegate.m */,
-				17EEC8F21ABA91C600EF19F7 /* TabBarController.h */,
-				17EEC8F31ABA91C600EF19F7 /* TabBarController.m */,
 				27156F7B18BA89430053A99C /* ViewController.h */,
 				27156F7C18BA89430053A99C /* ViewController.m */,
 				17EEC8EF1ABA248E00EF19F7 /* TableView.h */,
@@ -267,7 +262,6 @@
 				27156F5D18B76AF50053A99C /* MackenzieAppDelegate.m in Sources */,
 				17CF8D231AB74E5100C974EC /* DataCenter.m in Sources */,
 				27156F7D18BA89430053A99C /* ViewController.m in Sources */,
-				17EEC8F41ABA91C600EF19F7 /* TabBarController.m in Sources */,
 				17EEC8F11ABA248E00EF19F7 /* TableView.m in Sources */,
 				27156F5918B76AF50053A99C /* main.m in Sources */,
 			);
