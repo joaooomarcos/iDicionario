@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17206CEB1ABCB58100135EEC /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17206CEA1ABCB58100135EEC /* SearchViewController.m */; };
 		17CF8D231AB74E5100C974EC /* DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CF8D221AB74E5100C974EC /* DataCenter.m */; };
+		17EBA78B1AC0739500F30BBA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17EBA78A1AC0739500F30BBA /* Realm.framework */; };
+		17EBA78D1AC073BD00F30BBA /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 17EBA78C1AC073BD00F30BBA /* libc++.dylib */; };
+		17EBA7901AC0741B00F30BBA /* Letter.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EBA78F1AC0741B00F30BBA /* Letter.m */; };
 		17EEC8EB1ABA1D7B00EF19F7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17EEC8EA1ABA1D7B00EF19F7 /* AVFoundation.framework */; };
 		17EEC8F11ABA248E00EF19F7 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EEC8F01ABA248E00EF19F7 /* TableView.m */; };
 		27156F4D18B76AF50053A99C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27156F4C18B76AF50053A99C /* Foundation.framework */; };
@@ -36,8 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17206CE91ABCB58100135EEC /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		17206CEA1ABCB58100135EEC /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		17CF8D211AB74E5100C974EC /* DataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCenter.h; path = ../DataCenter.h; sourceTree = "<group>"; };
 		17CF8D221AB74E5100C974EC /* DataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataCenter.m; path = ../DataCenter.m; sourceTree = "<group>"; };
+		17EBA78A1AC0739500F30BBA /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		17EBA78C1AC073BD00F30BBA /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		17EBA78E1AC0741B00F30BBA /* Letter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Letter.h; sourceTree = "<group>"; };
+		17EBA78F1AC0741B00F30BBA /* Letter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Letter.m; sourceTree = "<group>"; };
 		17EEC8EA1ABA1D7B00EF19F7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		17EEC8EF1ABA248E00EF19F7 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		17EEC8F01ABA248E00EF19F7 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
@@ -66,10 +76,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17EBA78D1AC073BD00F30BBA /* libc++.dylib in Frameworks */,
 				17EEC8EB1ABA1D7B00EF19F7 /* AVFoundation.framework in Frameworks */,
 				27156F4F18B76AF50053A99C /* CoreGraphics.framework in Frameworks */,
 				27156F5118B76AF50053A99C /* UIKit.framework in Frameworks */,
 				27156F4D18B76AF50053A99C /* Foundation.framework in Frameworks */,
+				17EBA78B1AC0739500F30BBA /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +101,7 @@
 		27156F4018B76AF50053A99C = {
 			isa = PBXGroup;
 			children = (
+				17EBA78A1AC0739500F30BBA /* Realm.framework */,
 				27156F5218B76AF50053A99C /* Navigation */,
 				27156F6B18B76AF50053A99C /* NavigationTests */,
 				27156F4B18B76AF50053A99C /* Frameworks */,
@@ -108,6 +121,7 @@
 		27156F4B18B76AF50053A99C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17EBA78C1AC073BD00F30BBA /* libc++.dylib */,
 				17EEC8EA1ABA1D7B00EF19F7 /* AVFoundation.framework */,
 				27156F4C18B76AF50053A99C /* Foundation.framework */,
 				27156F4E18B76AF50053A99C /* CoreGraphics.framework */,
@@ -122,12 +136,16 @@
 			children = (
 				17CF8D211AB74E5100C974EC /* DataCenter.h */,
 				17CF8D221AB74E5100C974EC /* DataCenter.m */,
+				17EBA78E1AC0741B00F30BBA /* Letter.h */,
+				17EBA78F1AC0741B00F30BBA /* Letter.m */,
 				27156F5B18B76AF50053A99C /* MackenzieAppDelegate.h */,
 				27156F5C18B76AF50053A99C /* MackenzieAppDelegate.m */,
 				27156F7B18BA89430053A99C /* ViewController.h */,
 				27156F7C18BA89430053A99C /* ViewController.m */,
 				17EEC8EF1ABA248E00EF19F7 /* TableView.h */,
 				17EEC8F01ABA248E00EF19F7 /* TableView.m */,
+				17206CE91ABCB58100135EEC /* SearchViewController.h */,
+				17206CEA1ABCB58100135EEC /* SearchViewController.m */,
 				27156F5E18B76AF50053A99C /* Images.xcassets */,
 				27156F5318B76AF50053A99C /* Supporting Files */,
 			);
@@ -262,7 +280,9 @@
 				27156F5D18B76AF50053A99C /* MackenzieAppDelegate.m in Sources */,
 				17CF8D231AB74E5100C974EC /* DataCenter.m in Sources */,
 				27156F7D18BA89430053A99C /* ViewController.m in Sources */,
+				17EBA7901AC0741B00F30BBA /* Letter.m in Sources */,
 				17EEC8F11ABA248E00EF19F7 /* TableView.m in Sources */,
+				17206CEB1ABCB58100135EEC /* SearchViewController.m in Sources */,
 				27156F5918B76AF50053A99C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +402,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Navigation/Navigation-Prefix.pch";
 				INFOPLIST_FILE = "Navigation/Navigation-Info.plist";
@@ -395,6 +419,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Navigation/Navigation-Prefix.pch";
 				INFOPLIST_FILE = "Navigation/Navigation-Info.plist";

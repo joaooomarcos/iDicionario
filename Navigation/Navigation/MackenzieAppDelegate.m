@@ -9,6 +9,7 @@
 #import "MackenzieAppDelegate.h"
 #import "ViewController.h"
 #import "TableView.h"
+#import "SearchViewController.h"
 
 @implementation MackenzieAppDelegate
 
@@ -17,6 +18,7 @@
     // Criando as Views
     ViewController *viewController = [[ViewController alloc]initWithNibName:nil bundle:nil];
     TableView *tbv = [[TableView alloc]init];
+    SearchViewController *searchVC = [[SearchViewController alloc]init];
     
     // Criando a TabBarController
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
@@ -30,10 +32,11 @@
     // Adicionando as Views na TabBar
     [tabBarController addChildViewController:self.navigationController];
     [tabBarController addChildViewController:tbv];
+    [tabBarController addChildViewController:searchVC];
 
     // Setando o Título do item da TabBar
     [viewController setTitle: @"Letters"];
-    [tbv setTitle:@"List"];
+    [searchVC setTitle:@"Search"];
     
     tabBarController.tabBar.backgroundColor = [UIColor colorWithRed:0.0/255.0 green:111.0/255.0 blue:255.0/255.0 alpha:1.0];
     tabBarController.view.tintColor = [UIColor colorWithRed:0.0/255.0 green:111.0/255.0 blue:255.0/255.0 alpha:1.0];
@@ -45,6 +48,7 @@
     viewController.tabBarItem.image = [UIImage imageNamed:@"iconnav.png"];
     tbv.tabBarItem.title = @"List";
     tbv.tabBarItem.image = [UIImage imageNamed:@"iconlist.png"];
+    searchVC.tabBarItem.image = [UIImage imageNamed:@"iconSearch.png"];
     
     // Cor de fundo da view
     self.window.backgroundColor = [UIColor whiteColor];

@@ -8,29 +8,28 @@
 
 #import "TableView.h"
 #import "DataCenter.h"
+#import "Letter.h"
 
 @interface TableView (){
     DataCenter *data;
-    UITableView *tb;
+    NSArray *results;
+    Letter *let;
 }
 
 @end
 
 @implementation TableView
+@synthesize tb;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     // Dados
-    data = [[DataCenter alloc]init];
-    [data initData];
+    data = [DataCenter instance];
+    results = [[NSArray alloc]initWithArray:[data returnAll]];
     
     // Inciando a TableView com tamanho e posição
     tb = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 20.0, self.view.bounds.size.width,self.view.bounds.size.height-50)];
-    self.tableView = tb;
-    
-    //tb.frame = CGRectMake(0.0, 20.0, self.view.bounds.size.width,self.view.bounds.size.height-50);
-    //tb.bounds = CGRectMake(0.0, 20.0, self.view.bounds.size.width,self.view.bounds.size.height-50);
     
     // Delegate e DataSource da TableView
     tb.delegate = self;
@@ -40,7 +39,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:206.0/255.0 green:228.0/255.0 blue:255.0/255.0 alpha:1.0];
     
     // Adicionando a TableView na View
-    //[self.view addSubview:tb];
+    [self.view addSubview:tb];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,7 +56,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Retorna o numero de linhas na seção
-    return [data countData];
+    return results.count;
 }
 
 
@@ -71,11 +70,13 @@
     
     long row = [indexPath row];
     
-    // Inserindo dados na célula
-    [cell.textLabel setText:[data returnLetter:(int)row]];
-    [cell.detailTextLabel setText:[data returnWord:(int)row]];
-    [cell.imageView setImage:[data returnImage:(int)row]];
+    let = [results objectAtIndex:row];
     
+    // Inserindo dados na célula
+    [cell.textLabel setText:let.letter];
+    [cell.detailTextLabel setText:let.word];
+    [cell.imageView setImage:[UIImage imageNamed:let.image]];
+    cell.backgroundColor = [UIColor colorWithRed:206.0/255.0 green:228.0/255.0 blue:255.0/255.0 alpha:1.0];
     return cell;
 }
 
