@@ -43,8 +43,9 @@
     
     for (int i = 0; i < results.count; i++) {
         Letter *let = [results objectAtIndex:i];
-        if ([let.word isEqualToString:search.text]) {
+        if ([search.text compare:let.word options:NSCaseInsensitiveSearch] == NSOrderedSame || [search.text compare:let.letter options:NSCaseInsensitiveSearch] == NSOrderedSame || [search.text isEqualToString:[NSString stringWithFormat:@"%i",i+1]]) {
             [searchBar resignFirstResponder];
+            data.search = i;
             [self.tabBarController setSelectedIndex:0];
             return;
         }

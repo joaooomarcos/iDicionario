@@ -42,6 +42,10 @@
     [self.view addSubview:tb];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    tb.reloadData;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -80,7 +84,10 @@
     return cell;
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    data.search = (int)indexPath.row;
+    [self.tabBarController setSelectedIndex:0];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

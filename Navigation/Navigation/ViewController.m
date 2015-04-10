@@ -18,6 +18,7 @@
     int i;
     CGLayerRef *layer;
     UITextField *word;
+    UITextField *date;
     UIImage *image;
     UIImageView *imageView;
     UINavigationController *nvc;
@@ -25,6 +26,8 @@
     UIBarButtonItem *cameraImage;
     UIBarButtonItem *addImage;
     BOOL editing;
+    UIDatePicker *datePicker;
+    NSDateFormatter *formatter;
 }
 
 -(void) viewDidLoad {
@@ -38,9 +41,15 @@
     data = [DataCenter instance];
     results = [data returnAll];
     
+    data.search = 0;
+    
     let = [results objectAtIndex:i];
     // Seta o titulo da NavCont com o primeiro elemento
     self.navigationItem.title = let.letter;
+    
+    //Date Picker
+    formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"dd/MM/yyyy"];
     
     // Cria botões para a NavCont
     UIBarButtonItem *next = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(next:)];
@@ -51,20 +60,40 @@
     self.navigationItem.leftBarButtonItem=back;
     
     // Cria, posiciona, adiciona uma imagem
-    imageView = [[UIImageView alloc]initWithFrame:CGRectMake(300, 100, 280, 280)];
+    imageView = [[UIImageView alloc]initWithFrame:CGRectMake(300, 90, 280, 280)];
+    imageView.layer.cornerRadius = 140;
+    imageView.layer.masksToBounds = YES;
     image = [UIImage imageNamed:let.image];
     imageView.image = image;
     [self.view addSubview: imageView];
     imageView.userInteractionEnabled = YES;
     
+    
     // Cria, edita, posiciona, dimensiona, uma label
-    word = [[UITextField alloc]initWithFrame:CGRectMake(300, 400, 300, 80)];
+    word = [[UITextField alloc]initWithFrame:CGRectMake(300, 370, 300, 80)];
     word.text = let.word;
     word.font = [UIFont fontWithName:@"MarkerFelt-Wide" size:40]; //Helvetica-Bold
     word.textColor = [UIColor blackColor];
     word.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:word];
     word.enabled = NO;
+    
+    // Cria, edita, posiciona, dimensiona, uma label
+    date = [[UITextField alloc]initWithFrame:CGRectMake(300, 420, 300, 80)];
+    date.text = let.date;
+    date.font = [UIFont fontWithName:@"MarkerFelt-Thin" size:20];
+    date.textColor = [UIColor grayColor];
+    date.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:date];
+    date.enabled = NO;
+    
+    
+    // DatePicker
+    datePicker = [[UIDatePicker alloc]initWithFrame: CGRectMake(self.view.bounds.origin.x, 10, 0, 0)];
+    //datePicker.backgroundColor = [UIColor colorWithRed:206.0/255.0 green:228.0/255.0 blue:255.0/255.0 alpha:1.0];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    datePicker.hidden = YES;
+    [self.view addSubview:datePicker];
     
     // Toolbar
     UIToolbar *toolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.height-80, self.view.bounds.size.width, 30)];
@@ -82,10 +111,13 @@
     cameraImage.enabled = NO;
     addImage.enabled = NO;
     
+    
+    
     // Animações
     [UIView animateWithDuration:2.0 animations:^{
         imageView.transform = CGAffineTransformMakeTranslation(-280, 0);
         word.transform = CGAffineTransformMakeTranslation(-290, 0);
+        date.transform = CGAffineTransformMakeTranslation(-290, 0);
     }];
     
     // Gestos
@@ -117,14 +149,22 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    
+    let = [results objectAtIndex:data.search];
+    self.navigationItem.title = let.letter;
+    word.text = let.word;
+    date.text = let.date;
+    image = [UIImage imageNamed:let.image];
+    imageView.image = image;
 }
 
 // Botão próximo
 -(void)next:(id)sender {
     // Incrementa o indice
     if (i == 25) i = 0;
-    else i++;
+    else{
+        i++;
+        data.search++;
+    }
     
     let = [results objectAtIndex:i];
     
@@ -135,13 +175,17 @@
     [UIView animateWithDuration:0.2 animations:^{
         imageView.transform = CGAffineTransformTranslate(imageView.transform, -300, 0);
         word.transform = CGAffineTransformTranslate(word.transform, -300, 0);
+        date.transform = CGAffineTransformTranslate(date.transform, -300, 0);
     } completion:^(BOOL finished) {
         word.text = let.word;
-        word.frame = CGRectMake(300, 400, 300, 80);
+        word.frame = CGRectMake(300, 370, 300, 80);
+        
+        date.text = let.date;
+        date.frame = CGRectMake(300, 420, 300, 80);
         
         [imageView removeFromSuperview];
         
-        imageView.frame = CGRectMake(300, 100, 280, 280);
+        imageView.frame = CGRectMake(300, 90, 280, 280);
         image = [UIImage imageNamed:let.image];
         imageView.image = image;
 
@@ -150,6 +194,7 @@
         [UIView animateWithDuration:0.2 animations:^{
             imageView.transform = CGAffineTransformTranslate(imageView.transform, -282, 0);
             word.transform = CGAffineTransformTranslate(word.transform, -290, 0);
+            date.transform = CGAffineTransformTranslate(date.transform, -290, 0);
         }];
     }];
 }
@@ -158,8 +203,10 @@
 -(void)back:(id)sender{
     // Decrementa o indice
     if (i == 0) i = 25;
-    else i--;
-    
+    else{
+        i--;
+        data.search--;
+    }
     let = [results objectAtIndex:i];
     
     // Seta o titulo da NavCont
@@ -169,12 +216,16 @@
     [UIView animateWithDuration:0.2 animations:^{
         imageView.transform = CGAffineTransformTranslate(imageView.transform, 300, 0);
         word.transform = CGAffineTransformTranslate(word.transform, 300, 0);
+        date.transform = CGAffineTransformTranslate(date.transform, 300, 0);
     } completion:^(BOOL finished) {
         word.text = let.word;
-        word.frame = CGRectMake(-300, 400, 300, 80);
+        word.frame = CGRectMake(-300, 370, 300, 80);
+        
+        date.text = let.date;
+        date.frame = CGRectMake(-300, 420, 300, 80);
         
         [imageView removeFromSuperview];
-        imageView.frame = CGRectMake(-300, 100, 280, 280);
+        imageView.frame = CGRectMake(-300, 90, 280, 280);
         image = [UIImage imageNamed:let.image];
         imageView.image = image;
         [self.view addSubview: imageView];
@@ -182,6 +233,7 @@
         [UIView animateWithDuration:0.2 animations:^{
             imageView.transform = CGAffineTransformTranslate(imageView.transform, 320, 0);
             word.transform = CGAffineTransformTranslate(word.transform, 310, 0);
+            date.transform = CGAffineTransformTranslate(date.transform, 310, 0);
         }];
     }];
 }
@@ -197,7 +249,7 @@
 -(void)doubleTapImage:(UITapGestureRecognizer*)pan{
     // Fala
     AVSpeechSynthesizer *synt = [[AVSpeechSynthesizer alloc]init];
-    AVSpeechUtterance *ut = [AVSpeechUtterance speechUtteranceWithString:let.word];
+    AVSpeechUtterance *ut = [AVSpeechUtterance speechUtteranceWithString:word.text];
     [ut setPitchMultiplier:1.15f];
     ut.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-US"];
     [ut setRate:0.03f];
@@ -212,6 +264,10 @@
         editing = NO;
         cameraImage.enabled = NO;
         addImage.enabled = NO;
+        datePicker.hidden = YES;
+        date.text = [formatter stringFromDate:datePicker.date];
+        date.hidden = NO;
+        
     }
     else {
         word.enabled = YES;
@@ -220,13 +276,24 @@
         editing = YES;
         cameraImage.enabled = YES;
         addImage.enabled = YES;
+        datePicker.date = [formatter dateFromString:let.date];
+        datePicker.hidden = NO;
+        date.hidden = YES;
     }
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    Letter *lete = [data returnLetterWithNumber:let.i];
+    lete.word = word.text;
+    lete.date = [formatter stringFromDate:datePicker.date];
+    [realm commitWriteTransaction];
 }
 
 -(void) buttonReset:(id)sender{
     imageView.transform = CGAffineTransformIdentity;
-    imageView.frame = CGRectMake(20, 100, 280, 280);
-    word.text = [data returnWord:i];
+    imageView.frame = CGRectMake(20, 90, 280, 280);
+    //word.text = [data.letters objectAtIndex:let.i];
+    
 }
 
 -(void) addImage:(id)sender{
@@ -255,7 +322,7 @@
     if (longPress.state == UIGestureRecognizerStateBegan) {
         // Limpa as animaçoes anteriores, e posiciona novamente
         imageView.transform = CGAffineTransformIdentity;
-        imageView.frame = CGRectMake(20, 100, 280, 280);
+        imageView.frame = CGRectMake(20, 90, 280, 280);
     
         // Animações
         [UIView animateWithDuration:2.0 animations:^{
@@ -277,9 +344,13 @@
 -(void)pinchImage:(UIPinchGestureRecognizer*)sender{
     if ([sender scale] > 0.3 && [sender scale] < 3.0) {
         imageView.transform = CGAffineTransformIdentity;
-        imageView.frame = CGRectMake(20, 100, 280, 280);
+        imageView.frame = CGRectMake(20, 90, 280, 280);
         imageView.transform = CGAffineTransformMakeScale([sender scale], [sender scale]);
     }
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [word resignFirstResponder];
 }
 
 @end

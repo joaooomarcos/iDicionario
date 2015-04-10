@@ -15,5 +15,7 @@
 @property NSString *letter;
 @property NSString *word;
 @property NSString *image;
+@property NSString *date;
+@property int i;
 
 @end
